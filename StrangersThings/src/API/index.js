@@ -16,7 +16,8 @@ export const fetchAllPosts = async () => {
     }
 }
 
-const registerUser = async () => {
+/* COMPLETE */
+export const registerUser = async () => {
     try {
         const response = await fetch(
             `${API_URL}/users/register`, {
@@ -37,8 +38,9 @@ const registerUser = async () => {
                 console.error(err);
             }
             }
-            
- const login = async () => {
+
+/* COMPLETE */
+ export const login = async () => {
     try {
         const response = await fetch(`${API_URL}/users/login`, {
             method: "POST",
@@ -59,3 +61,5 @@ const registerUser = async () => {
         console.error(err);
     }
  }
+
+ 
