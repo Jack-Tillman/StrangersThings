@@ -1,17 +1,25 @@
-// import { useState } from 'react'
-import Profile from './components/Profile'
+import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import { Home } from './components/Home';
+import { Login } from './components/Login';
+import { Register } from './components/Register';
 import './App.css'
 import Searchbar from './components/Searchbar'
 
 function App() {
- 
+
   return (
     <>
-      <Searchbar/>
-      <Profile />
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/:login" element={<Login />} />
+      <Route path="/:register" element={<Register />} />
+    </Routes>
+    </BrowserRouter>
     </>
-  )
-}
-App()
+  )}
 
-export default App
+
+export default App;
