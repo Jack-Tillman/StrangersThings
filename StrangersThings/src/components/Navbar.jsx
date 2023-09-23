@@ -1,13 +1,22 @@
+import { Link } from "react-router-dom";
 
-import { Link } from 'react-router-dom'
+const Navbar = ({ token }) => {
+  return (
+    <nav>
+      <Link to="/" className="nav-item">
+        Home
+      </Link>
+      <Link to="/profile" className="nav-item">
+        Profile
+      </Link>
+      <Link to="/login" className="nav-item">
+        Login
+      </Link>
+      <Link to="/register" className="nav-item">
+        Register
+      </Link>
+    </nav>
+  );
+};
 
-export const Navbar = () => {
-    return(
-        <nav>
-           <Link to="/">Home</Link>
-           <Link to="/profile">Profile</Link>
-           <Link to="/login">Login</Link>
-           <Link to="/register">Register</Link>   
-        </nav>
-    )
-}
+export default Navbar;
