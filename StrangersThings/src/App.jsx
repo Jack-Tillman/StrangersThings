@@ -8,14 +8,14 @@ import './App.css'
 import Searchbar from './components/Searchbar'
 
 function App() {
-
+  const [token, setToken] = useState(null);
   return (
     <>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/:login" element={<Login />} />
-      <Route path="/:register" element={<Register />} />
+      <Route path="/" element={<Home token={token} />} />
+      <Route path="/login" element={<Login token={token} setToken={setToken} />} />
+      <Route path="/register" element={<Register token={token} setToken={setToken}/>} />
     </Routes>
     </BrowserRouter>
     </>
