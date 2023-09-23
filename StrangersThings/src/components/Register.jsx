@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { registerUser } from '../API/index'
 
 
 const Register = () => {
@@ -9,7 +10,7 @@ const Register = () => {
 
     async function handleUserRegistration(e) {
         e.preventDefault();
-        await NewUser (username, password, token);
+        const newUser = await registerUser;
         if (e.target.password === e.target.confirmPassword) 
         authenticated;
     return (
