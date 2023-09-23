@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PostListTitle from "./PostListTitle";
+
 
 export default async function Searchbar() {
   const [posts, setPosts] = useState([]);
