@@ -23,7 +23,8 @@ export const registerUser = async () => {
             `${API_URL}/users/register`, {
                 method: "POST",
                 headers: {
-                    'Content-type': 'application/json'
+                    'Content-type': `application/json`,
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     user: {
