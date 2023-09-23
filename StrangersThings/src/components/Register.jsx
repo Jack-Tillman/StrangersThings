@@ -33,9 +33,9 @@ const Register = ({ token, setToken }) => {
 
   return (
     <>
-      <form>
+      <form className="styleForm">
         <label htmlFor="username">
-          <input
+          <input className="input"
             type="text"
             name="username"
             placeholder="Username"
@@ -45,7 +45,7 @@ const Register = ({ token, setToken }) => {
           />
         </label>
         <label htmlFor="password">
-          <input
+          <input className="input"
             type="password"
             name="password"
             id="password"
@@ -59,7 +59,7 @@ const Register = ({ token, setToken }) => {
           />
         </label>
         <label htmlFor="confirmPassword">
-          <input
+          <input className="input"
             type="password"
             name="confirmPassword"
             id="confirmPassword"
@@ -71,7 +71,7 @@ const Register = ({ token, setToken }) => {
             autoComplete="off"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button onClick={handleUserRegistration}>Register Me</button>
+          <button className="button" onClick={handleUserRegistration}>Register Me</button>
         </label>
       </form>
     </>
@@ -79,41 +79,3 @@ const Register = ({ token, setToken }) => {
 };
 
 export default Register;
-
-/* 
-
-
-
-
-  <form
-          onSubmit={handleUserRegistration}
-          style={{ width: "1200px", height: "1200px" }}
-        >
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </label>
-          <button className="register-btn" type="submit">
-            Register
-          </button>
-        </form>
-
-
-
-*/

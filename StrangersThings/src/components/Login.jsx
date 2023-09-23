@@ -4,18 +4,25 @@ import { login } from "../API/index";
 const Login = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [authenticated, setAuthenticated] = useState(sessionStorage.getItem(sessionStorage.getItem("authenticated")|| false));
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  
   function handleUserRegistration(e) {
     e.preventDefault();
     //same process as in Register.jsx, but with validation step and without confirmPassword
     const loginUser = async (username, password) => {
       try {
-        const loggedIn = await login(username, password);
+
+        const loggedIn = await login(username, password, authenticated, isLoggedIn);
         console.log(loggedIn);
         //if user logs in successfully, clear the form, otherwise don't clear the form
+        //set authenticated and logged in to true to enable posting/messaging/etc
         if (loggedIn.success) {
           setUsername("");
           setPassword("");
+          setAuthenticated(true)
+          setIsLoggedIn(true)
+
         } else {
           console.log(loggedIn);
         }
@@ -29,9 +36,9 @@ const Login = ({ token, setToken }) => {
 
   return (
     <>
-      <form>
+      <form className="styleForm">
         <label htmlFor="username">
-          <input
+          <input className="input"
             type="text"
             name="username"
             placeholder="Username"
@@ -41,7 +48,7 @@ const Login = ({ token, setToken }) => {
           />
         </label>
         <label htmlFor="password">
-          <input
+          <input className="input"
             type="password"
             name="password"
             id="password"
@@ -54,10 +61,11 @@ const Login = ({ token, setToken }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button onClick={handleUserRegistration}>Log In</button>
+        <button className="button" onClick={handleUserRegistration}>Log In</button>
       </form>
     </>
   );
 };
 
 export default Login;
+

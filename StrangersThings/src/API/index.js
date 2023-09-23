@@ -55,6 +55,7 @@ export const login = async (username, password) => {
       }),
     });
     const result = await response.json();
+    sessionStorage.token = result.data.token
     console.log(result);
     return result;
   } catch (err) {

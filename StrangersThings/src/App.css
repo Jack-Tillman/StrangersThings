@@ -1,1 +1,67 @@
-/* main CSS stylesheet */
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+body {
+    background-color: rgb(28, 72, 51);
+}
+
+/* navbar and posts styling */
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 25px;
+    padding: 25px;
+    
+}
+
+.nav-item {
+    color: rgb(11, 35, 23);
+    font-size: 30px;
+    text-decoration: none;
+    padding: 10px;
+}
+#post-container {
+    background-color: rgb(19, 48, 34);
+    color: rgb(132, 175, 154);
+    margin: 25px;
+    padding: 25px;
+    width: 225px;
+}
+
+#all-post-container {
+    background-image: url(IMG_5064.JPG);
+    margin: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* login and register forms styling */
+.styleForm {
+    background-image: url(IMG_4990.JPG);
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.input {
+    padding: 5px;
+    margin: 10px;
+}
+
+.button {
+    background-color:rgb(20, 71, 54);
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 30px;
+    margin: 10px;
+}
+
+.button:hover {
+
+}
