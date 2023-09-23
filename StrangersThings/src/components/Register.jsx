@@ -10,7 +10,7 @@ const Register = () => {
         e.preventDefault();
         await NewUser (username, password, token);
         if (e.target.password === e.target.confirmPassword) 
-    }
+    
     return (
         <form onSubmit={handleUserRegistration}>
             <label>
@@ -18,7 +18,8 @@ const Register = () => {
             </label>
                 <input type="submit" value="Submit" />
         </form>
-    )
+        
+    )}
 }
 
 export default Register;
