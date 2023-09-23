@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAllPosts } from "../API";
 
-export const Home = () => {
+const Home = () => {
     // state to keep all posts, useful to render all posts 
     const [posts, setPosts] = useState([]);
     // state to track any errors, useful for conditional rendering
@@ -9,12 +9,12 @@ export const Home = () => {
 
     useEffect(() => {
         async function getAllPosts() {
-          const APIReesponse = await fetchAllPosts();
-          console.log(APIReesponse);
-          if (APIReesponse.success) {
-            setPosts(APIReesponse.data.posts);
+          const APIResponse = await fetchAllPosts();
+          console.log(APIResponse);
+          if (APIResponse.success) {
+            setPosts(APIResponse.data.posts);
           } else {
-            setError(APIReesponse.error.message);
+            setError(APIResponse.error.message);
           }
         }
         getAllPosts();
@@ -45,3 +45,5 @@ export const Home = () => {
        </>
     )
 }
+
+export default Home;
