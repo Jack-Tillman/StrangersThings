@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAllPosts } from "../API";
 
-const Home = () => {
+const Home = ({token}) => {
     // state to keep all posts, useful to render all posts 
     const [posts, setPosts] = useState([]);
     // state to track any errors, useful for conditional rendering

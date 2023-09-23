@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import PostListTitle from "./PostListTitle";
 
-export default async function Searchbar() {
+
+async function Searchbar() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [searchParam, setSearchParam] = useState("");
@@ -21,9 +21,11 @@ export default async function Searchbar() {
           />
         </label>
       </div>
-      {postsToDisplay.map((post) => {
-        return <PostListTitle key={post.id} post={post} />;
-      })}
+      {/* {postsToDisplay.map((post) => {
+        return <div key={post.id} posts={posts} />;
+      })} */}
     </div>
   );
 }
+
+export default Searchbar;

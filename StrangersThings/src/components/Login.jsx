@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import Register from './Register'
 
-const Login = () => {
+const Login = ({token, setToken}) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [token, setToken] = useState("")
+
 
     return (
         <form>

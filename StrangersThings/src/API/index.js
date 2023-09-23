@@ -17,51 +17,51 @@ export const fetchAllPosts = async () => {
 }
 
 /* COMPLETE */
-export const registerUser = async () => {
+export const registerUser = async (username, password) => {
     try {
         const response = await fetch(
             `${API_URL}/users/register`, {
                 method: "POST",
                 headers: {
                     'Content-type': `application/json`,
-                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     user: {
-                        username: {username},
-                        password: {password}
+                        username: `${username}`,
+                        password: `${password}`
                     }
                     })
                 });
                 const result = await response.json();
                 console.log(result)
+                return result;
             } catch(err) {
                 console.error(err);
             }
             }
 
 /* COMPLETE */
- export const login = async () => {
-    try {
-        const response = await fetch(`${API_URL}/users/login`, {
-            method: "POST",
-            header: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: {
-                    username: {username},
-                    password: {password}
-                }
-            })
-        });
-        const result = await response.json();
-        console.log(result);
-        return result
-    } catch(err) {
-        console.error(err);
-    }
- }
+//  export const login = async () => {
+//     try {
+//         const response = await fetch(`${API_URL}/users/login`, {
+//             method: "POST",
+//             header: {
+//                 'Content-type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 user: {
+//                     username: {username},
+//                     password: {password}
+//                 }
+//             })
+//         });
+//         const result = await response.json();
+//         console.log(result);
+//         return result
+//     } catch(err) {
+//         console.error(err);
+//     }
+//  }
 
  /* 
  INCOMPLETE 
@@ -71,32 +71,32 @@ export const registerUser = async () => {
  so Jack will edit this function after create post is finished to make sure this call is functional 
 
  */
- const updatePost = async (postObject) => {
-  try {
-    // You will need to insert a variable into the fetch template literal 
-    // in order to make the POST_ID dynamic. 
-    // 5e8d1bd48829fb0017d2233b is just for demonstration.
-    const response = await fetch(`${API_URL}/posts/${postObject.id}`, {
-      method: "PATCH",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${TOKEN_STRING_HERE}`
-      },
-      body: JSON.stringify({
-        post: {
-          title: `${postObject.title}`,
-          description: `${postObject.description}`,
-          price: `${postObject.price}`,
-          location: `${postObject.location}`,
-          willDeliver: `${postObject.willDeliver}`
-        }
-      })
-    });
-    const result = await response.json();
-    console.log(result);
-    return result
-  } catch (err) {
-    console.error(err);
-  }
- }
+//  export const updatePost = async (postObject) => {
+//   try {
+//     // You will need to insert a variable into the fetch template literal 
+//     // in order to make the POST_ID dynamic. 
+//     // 5e8d1bd48829fb0017d2233b is just for demonstration.
+//     const response = await fetch(`${API_URL}/posts/${postObject.id}`, {
+//       method: "PATCH",
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+//       },
+//       body: JSON.stringify({
+//         post: {
+//           title: `${postObject.title}`,
+//           description: `${postObject.description}`,
+//           price: `${postObject.price}`,
+//           location: `${postObject.location}`,
+//           willDeliver: `${postObject.willDeliver}`
+//         }
+//       })
+//     });
+//     const result = await response.json();
+//     console.log(result);
+//     return result
+//   } catch (err) {
+//     console.error(err);
+//   }
+//  }
 
