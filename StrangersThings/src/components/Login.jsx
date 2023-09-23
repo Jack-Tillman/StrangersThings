@@ -34,9 +34,9 @@ const Login = ({ token, setToken }) => {
 
   return (
     <>
-      <form>
+      <form className="styleForm">
         <label htmlFor="username">
-          <input
+          <input className="input"
             type="text"
             name="username"
             placeholder="Username"
@@ -46,7 +46,7 @@ const Login = ({ token, setToken }) => {
           />
         </label>
         <label htmlFor="password">
-          <input
+          <input className="input"
             type="password"
             name="password"
             id="password"
@@ -59,7 +59,7 @@ const Login = ({ token, setToken }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button onClick={handleUserRegistration}>Log In</button>
+        <button className="button" onClick={handleUserRegistration}>Log In</button>
       </form>
     </>
   );
