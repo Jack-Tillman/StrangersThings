@@ -7,6 +7,7 @@ const Login = () => {
     const [token, setToken] = useState("")
 
     return (
+        <div>
         <form>
             <label>
                 <input type="text"
@@ -23,6 +24,7 @@ const Login = () => {
                         onChange={(event) => setPassword(event.target.value)}/>
             </label>
         </form>
+        </div>
     )
 }
 
