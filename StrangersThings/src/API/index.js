@@ -118,11 +118,11 @@ export const makePost = async (postData, token) => {
       },
       body: JSON.stringify({
         post: {
-          title: postData.title,
-          description: postData.description,
-          price: postData.price,
-          location: postData.location,
-          willDeliver: postData.willDeliver
+          title: `${postData.title}`,
+          description: `${postData.description}`,
+          price: `${postData.price}`,
+          location: `${postData.location}`,
+          willDeliver: `${postData.willDeliver}`
         }
       })
     });
