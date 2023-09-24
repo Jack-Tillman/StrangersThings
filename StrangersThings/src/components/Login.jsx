@@ -5,29 +5,23 @@ const Login = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(sessionStorage.getItem(sessionStorage.getItem("authenticated")|| false));
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
   
   function handleUserRegistration(e) {
+    
     e.preventDefault();
     //same process as in Register.jsx, but with validation step and without confirmPassword
     const loginUser = async (username, password) => {
       try {
-
-        const loggedIn = await login(username, password, authenticated, isLoggedIn);
-        console.log(loggedIn);
+        const authenticated = await login(username, password, token);
+        console.log(authenticated);
         //if user logs in successfully, clear the form, otherwise don't clear the form
-        //set authenticated and logged in to true to enable posting/messaging/etc
-        if (loggedIn.success) {
+        //set authenticated to true to enable posting/messaging/etc
+        if (authenticated.success) {
           setUsername("");
           setPassword("");
           setAuthenticated(true)
-          setIsLoggedIn(true)
 
-        } else {
-          console.log(loggedIn);
-        }
-        return loggedIn;
-      } catch (error) {
+        }} catch (error) {
         console.error(error, error.message);
       }
     };

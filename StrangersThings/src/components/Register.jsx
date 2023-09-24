@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { registerUser } from "../API/index";
 
-const Register = ({ token, setToken }) => {
+const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  //   const [token, setToken] = useState("");
 
   function handleUserRegistration(e) {
     e.preventDefault();
