@@ -71,34 +71,34 @@ export const login = async (username, password) => {
  so Jack will edit this function after create post is finished to make sure this call is functional 
 
  */
-//  export const updatePost = async (postObject) => {
-//   try {
-//     // You will need to insert a variable into the fetch template literal
-//     // in order to make the POST_ID dynamic.
-//     // 5e8d1bd48829fb0017d2233b is just for demonstration.
-//     const response = await fetch(`${API_URL}/posts/${postObject.id}`, {
-//       method: "PATCH",
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer ${TOKEN_STRING_HERE}`
-//       },
-//       body: JSON.stringify({
-//         post: {
-//           title: `${postObject.title}`,
-//           description: `${postObject.description}`,
-//           price: `${postObject.price}`,
-//           location: `${postObject.location}`,
-//           willDeliver: `${postObject.willDeliver}`
-//         }
-//       })
-//     });
-//     const result = await response.json();
-//     console.log(result);
-//     return result
-//   } catch (err) {
-//     console.error(err);
-//   }
-//  }
+ export const updatePost = async (postObject, token) => {
+  try {
+    // You will need to insert a variable into the fetch template literal
+    // in order to make the POST_ID dynamic.
+    // 5e8d1bd48829fb0017d2233b is just for demonstration.
+    const response = await fetch(`${API_URL}/posts/${postObject.id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        post: {
+          title: `${postObject.title}`,
+          description: `${postObject.description}`,
+          price: `${postObject.price}`,
+          location: `${postObject.location}`,
+          willDeliver: `${postObject.willDeliver}`
+        }
+      })
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+ }
 
 /* NOT TESTED YET
 
