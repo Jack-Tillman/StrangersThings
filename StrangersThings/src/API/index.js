@@ -99,3 +99,37 @@ export const login = async (username, password) => {
 //     console.error(err);
 //   }
 //  }
+
+/* NOT TESTED YET
+
+  this function assumes the postData taken from the make post component is an
+  object with 5 keys (title, desc, etc.) and also that the token of the user 
+  is passed as a variable as well
+
+*/
+
+export const makePost = async (postData, token) => {
+  try {
+    const response = await fetch(`${API_URL}/posts`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        post: {
+          title: postData.title,
+          description: postData.description,
+          price: postData.price,
+          location: postData.location,
+          willDeliver: postData.willDeliver
+        }
+      })
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}
