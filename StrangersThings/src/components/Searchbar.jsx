@@ -5,11 +5,12 @@ function Searchbar({ posts, setPosts }) {
 
   const postsToDisplay = searchParam
     ? posts.filter((post) => post.title.toLowerCase().includes(searchParam))
-    : posts;
+    : posts
+
   return (
     <>
-      <div>
-        <label>
+      <div id="searchbar-container">
+        <label htmlFor="searchbar">
           Search Posts:{" "}
           <input
             type="text"
