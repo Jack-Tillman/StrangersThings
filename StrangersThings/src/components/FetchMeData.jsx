@@ -22,5 +22,3 @@ export default async function FetchMeData(){
                 console.error(err)
             }
         }
-
-    

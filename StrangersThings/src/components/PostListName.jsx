@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-
-const PostListName = ({post}) => {
-    const navigate = useNavigate();
+const PostListName = ({ post }) => {
+  const navigate = useNavigate();
   return (
-    <div id="post-container" >
+    <div id="post-container" key={post._id}>
       {/*I gave each element within post-container class of post as well as specific classname so that */}
       <h2 className="post-h2">{post.title}</h2>
       <h3 className="post-h3">{post.author.username}</h3>

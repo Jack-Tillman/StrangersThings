@@ -8,7 +8,7 @@ import FetchMeData from "./FetchMeData";
 // import MyPosts from "./MyPosts";
 import { useEffect } from "react";
 
-export default function Profile({ token }) {
+function Profile({ token }) {
   const [username, setUsername] = useState("");
   // fetch /me data and display username + other info.
   // fetch messages data and display
@@ -24,3 +24,5 @@ export default function Profile({ token }) {
     </>
   );
 }
+
+export default Profile;

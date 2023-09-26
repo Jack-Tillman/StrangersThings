@@ -50,7 +50,7 @@ const Home = ({ token }) => {
       {postsToDisplay && (
         <div id="all-post-container">
           {postsToDisplay.map((post) => {
-            return <PostListName key={post.id} post={post} />;
+            return <PostListName key={post._id} post={post} />;
           })}
         </div>
       )}
