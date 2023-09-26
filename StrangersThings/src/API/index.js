@@ -1,69 +1,69 @@
 /* has all the API requests  */
 
-const COHORT_NAME = '2306-ftb-et-web-am';
-const API_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
+const COHORT_NAME = "2306-ftb-et-web-am";
+const API_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 /* COMPLETE */
 export const fetchAllPosts = async () => {
-    try {
-      const response = await fetch(`${API_URL}/posts`);
-      const result = await response.json();
-      console.log(result);
-      /*To get just posts, do result.data.posts*/
-      return result;
-    } catch (error) {
-      console.error(error, error.message);
-    }
-}
+  try {
+    const response = await fetch(`${API_URL}/posts`);
+    const result = await response.json();
+    console.log(result);
+    /*To get just posts, do result.data.posts*/
+    return result;
+  } catch (error) {
+    console.error(error, error.message);
+  }
+};
 
 /* COMPLETE */
-export const registerUser = async () => {
-    try {
-        const response = await fetch(
-            `${API_URL}/users/register`, {
-                method: "POST",
-                headers: {
-                    'Content-type': `application/json`,
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    user: {
-                        username: {username},
-                        password: {password}
-                    }
-                    })
-                });
-                const result = await response.json();
-                console.log(result)
-            } catch(err) {
-                console.error(err);
-            }
-            }
+export const registerUser = async (username, password) => {
+  try {
+    const response = await fetch(`${API_URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-type": `application/json`,
+      },
+      body: JSON.stringify({
+        user: {
+          username: `${username}`,
+          password: `${password}`,
+        },
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 /* COMPLETE */
- export const login = async () => {
-    try {
-        const response = await fetch(`${API_URL}/users/login`, {
-            method: "POST",
-            header: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: {
-                    username: {username},
-                    password: {password}
-                }
-            })
-        });
-        const result = await response.json();
-        console.log(result);
-        return result
-    } catch(err) {
-        console.error(err);
-    }
- }
+export const login = async (username, password) => {
+  try {
+    const response = await fetch(`${API_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: `${username}`,
+          password: `${password}`,
+        },
+      }),
+    });
+    const result = await response.json();
+    sessionStorage.token = result.data.token
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
- /* 
+/* 
  INCOMPLETE 
  - Need the bearer token variable
  - Not sure if postObject will need to be destructured when passing it as an argument 
@@ -71,16 +71,16 @@ export const registerUser = async () => {
  so Jack will edit this function after create post is finished to make sure this call is functional 
 
  */
- const updatePost = async (postObject) => {
+ export const updatePost = async (postObject, token) => {
   try {
-    // You will need to insert a variable into the fetch template literal 
-    // in order to make the POST_ID dynamic. 
+    // You will need to insert a variable into the fetch template literal
+    // in order to make the POST_ID dynamic.
     // 5e8d1bd48829fb0017d2233b is just for demonstration.
     const response = await fetch(`${API_URL}/posts/${postObject.id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
         post: {
@@ -100,3 +100,36 @@ export const registerUser = async () => {
   }
  }
 
+/* NOT TESTED YET
+
+  this function assumes the postData taken from the make post component is an
+  object with 5 keys (title, desc, etc.) and also that the token of the user 
+  is passed as a variable as well
+
+*/
+
+export const makePost = async (postData, token) => {
+  try {
+    const response = await fetch(`${API_URL}/posts`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        post: {
+          title: `${postData.title}`,
+          description: `${postData.description}`,
+          price: `${postData.price}`,
+          location: `${postData.location}`,
+          willDeliver: `${postData.willDeliver}`
+        }
+      })
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}
