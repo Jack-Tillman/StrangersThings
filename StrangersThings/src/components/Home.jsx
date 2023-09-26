@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchAllPosts } from "../API";
+import Searchbar from '../components/Searchbar';
 
 export const Home = () => {
     // state to keep all posts, useful to render all posts 

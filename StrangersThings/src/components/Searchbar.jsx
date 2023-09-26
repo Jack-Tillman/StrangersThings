@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-
-export default async function Searchbar() {
+async function Searchbar() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [searchParam, setSearchParam] = useState("");
-
+  const navigate = useNavigate();
 
     const postsToDisplay = searchParam ? posts.filter((post) => 
     post.title.toLowerCase().includes(searchParam)) : posts;
-  return (
-    <div>
+  return (<>
+    
       <div>
         <label>
-          Search:{" "}
+          Search Posts:{" "}
           <input
             type="text"
             placeholder="search"
@@ -21,9 +21,8 @@ export default async function Searchbar() {
           />
         </label>
       </div>
-      {postsToDisplay.map((post) => {
-        return <PostListTitle key={post.id} post={post} />;
-      })}
-    </div>
+    
+    </>
   );
 }
+export default Searchbar
