@@ -5,30 +5,34 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [authenticated, setAuthenticated] = useState(sessionStorage.getItem("authenticated")|| false);
+  const [token, setToken] = useState(null);
 
   function handleUserRegistration(e) {
     e.preventDefault();
 
-    const fetchToken = async (username, password) => {
+    const fetchToken = async (username, password, token) => {
       try {
-        const newUser = await registerUser(username, password);
+        const newUser = await registerUser(username, password, authenticated, token);
         console.log(newUser);
         if (newUser.success) {
           setUsername("");
           setPassword("");
           setConfirmPassword("");
+          setAuthenticated(true);
+          sessionStorage.setItem("token", newUser.data.token);
+
           return newUser;
         } else {
-          console.log(newUser);
-          return newUser;
+          console.log(token);
         }
       } catch (error) {
         console.error(error, error.message);
-      }
-    };
-    fetchToken(username, password);
+      }      
+    }
+    fetchToken(username, password, token);
   }
-
+    
   return (
     <>
       <form className="styleForm">
@@ -74,6 +78,6 @@ const Register = () => {
       </form>
     </>
   );
-};
+}
 
 export default Register;
