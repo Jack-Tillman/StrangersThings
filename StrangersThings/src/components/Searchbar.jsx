@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+
 async function Searchbar() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
