@@ -4,7 +4,7 @@ import { login } from "../API/index";
 const Login = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(sessionStorage.getItem(sessionStorage.getItem("authenticated")|| false));
+  const [authenticated, setAuthenticated] = useState(sessionStorage.getItem("authenticated")|| false);
   
   function handleUserRegistration(e) {
     
