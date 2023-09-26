@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logout from '../components/Logout'
 
 const Navbar = ({ token }) => {
   return (
@@ -15,6 +16,8 @@ const Navbar = ({ token }) => {
       <Link to="/register" className="nav-item">
         Register
       </Link>
+
+      <button className="button" onClick={(Logout)}>Logout</button>
     </nav>
   );
 };
