@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-async function Searchbar() {
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
+function Searchbar({ posts, setPosts }) {
   const [searchParam, setSearchParam] = useState("");
-  const navigate = useNavigate();
 
-    const postsToDisplay = searchParam ? posts.filter((post) => 
-    post.title.toLowerCase().includes(searchParam)) : posts;
-  return (<>
-    
+  const postsToDisplay = searchParam
+    ? posts.filter((post) => post.title.toLowerCase().includes(searchParam))
+    : posts;
+  return (
+    <>
       <div>
         <label>
           Search Posts:{" "}
@@ -21,8 +18,7 @@ async function Searchbar() {
           />
         </label>
       </div>
-    
     </>
   );
 }
-export default Searchbar
+export default Searchbar;
