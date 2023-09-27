@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 const PostListName = ({ post }) => {
   const navigate = useNavigate();
+  const token = sessionStorage.getItem("token");
   return (
     <div id="post-container" key={post._id}>
-      {/*I gave each element within post-container class of post as well as specific classname so that */}
       <h2 className="post-h2">{post.title}</h2>
       <h3 className="post-h3">{post.author.username}</h3>
       <p className="post-description">{post.description}</p>
@@ -13,7 +13,7 @@ const PostListName = ({ post }) => {
       <p className="post-updatedAt">{post.updatedAt}</p>
       <p className="post-location">{post.location}</p>
       <p className="post-willDeliver">{post.willDeliver}</p>
-      <button
+      {token && <button
         className="details-button"
         id="details-button"
         onClick={() => {
@@ -22,7 +22,7 @@ const PostListName = ({ post }) => {
         }}
       >
         See Details
-      </button>
+      </button>}
     </div>
   );
 };
