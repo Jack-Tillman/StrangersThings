@@ -129,3 +129,55 @@ export const makePost = async (postObject, token) => {
     console.error(err);
   }
 }
+
+export const fetchPostById = async (token) => {
+  try {
+    const response = await fetch(`${API_URL}/posts`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const result = await response.json();
+    console.log(result);
+    /*To get just posts, do result.data.posts*/
+    return result;
+  } catch (error) {
+    console.error(error, error.message);
+  }
+};
+
+export const deletePost = async (token, postId) => {
+  try {
+    const response = await fetch(`${API_URL}/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const myData = async (token) => {
+
+  try {
+    const response = await fetch(`${API_URL}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}
