@@ -181,3 +181,25 @@ export const myData = async (token) => {
     console.error(err);
   }
 }
+
+export const postMessage = async (messageId, token, messageBody) => {
+  try {
+    const response = await fetch(`${API_URL}/posts/${messageId}/messages`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        message: {
+          content: `${messageBody}`
+        }
+      })
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}

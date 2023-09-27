@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const PostListName = ({ post }) => {
   const navigate = useNavigate();
+  const token = sessionStorage.getItem("token");
   return (
     <div id="post-container" key={post._id}>
       <h2 className="post-h2">{post.title}</h2>
@@ -12,7 +13,7 @@ const PostListName = ({ post }) => {
       <p className="post-updatedAt">{post.updatedAt}</p>
       <p className="post-location">{post.location}</p>
       <p className="post-willDeliver">{post.willDeliver}</p>
-      <button
+      {token && <button
         className="details-button"
         id="details-button"
         onClick={() => {
@@ -21,7 +22,7 @@ const PostListName = ({ post }) => {
         }}
       >
         See Details
-      </button>
+      </button>}
     </div>
   );
 };

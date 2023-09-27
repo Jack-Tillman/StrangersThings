@@ -5,6 +5,7 @@ import { fetchPostById } from "../API";
 import EditPost from "./EditPost";
 import { deletePost } from "../API";
 import { myData } from "../API";
+import { postMessage } from "../API";
 
 /* 
 DetailedPosts is the component that renders a detailed version of each post when the user clicks on the details button 
@@ -122,6 +123,33 @@ export default function DetailedPosts() {
           >
             Remove
           </button>
+          {/* <button
+            className="message-button"
+            id="message-button"
+            style={{
+              margin: "0rem 1rem",
+            }}
+            onClick={ async () => {
+                return (
+                    //probably make this a component, it needs to render an input so user writes message and on submit it gets sent
+                    <>
+                    <input
+                    id="title"
+                    type="text"
+                    name="title"
+                    placeholder="title"
+                    required
+                    onChange={ (e) => {
+                    }     
+                    }
+                    />
+                    </>
+                )
+              }
+            }
+          >
+            send message
+          </button> */}
         </div>
       ))}
     </div>

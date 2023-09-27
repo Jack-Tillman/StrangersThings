@@ -4,10 +4,11 @@ import { login } from "../API/index";
 const Login = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(sessionStorage.getItem("authenticated")|| false);
-  
+  const [authenticated, setAuthenticated] = useState(
+    sessionStorage.getItem("authenticated") || false
+  );
+
   function handleUserRegistration(e) {
-    
     e.preventDefault();
     //same process as in Register.jsx, but with validation step and without confirmPassword
     const loginUser = async (username, password) => {
@@ -19,9 +20,9 @@ const Login = ({ token, setToken }) => {
         if (authenticated.success) {
           setUsername("");
           setPassword("");
-          setAuthenticated(true)
-
-        }} catch (error) {
+          setAuthenticated(true);
+        }
+      } catch (error) {
         console.error(error, error.message);
       }
     };
@@ -32,7 +33,8 @@ const Login = ({ token, setToken }) => {
     <>
       <form className="styleForm">
         <label htmlFor="username">
-          <input className="input"
+          <input
+            className="input"
             type="text"
             name="username"
             placeholder="Username"
@@ -42,7 +44,8 @@ const Login = ({ token, setToken }) => {
           />
         </label>
         <label htmlFor="password">
-          <input className="input"
+          <input
+            className="input"
             type="password"
             name="password"
             id="password"
@@ -55,11 +58,12 @@ const Login = ({ token, setToken }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button className="button" onClick={handleUserRegistration}>Log In</button>
+        <button className="button" onClick={handleUserRegistration}>
+          Log In
+        </button>
       </form>
     </>
   );
 };
 
 export default Login;
-
