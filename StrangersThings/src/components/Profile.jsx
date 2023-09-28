@@ -3,11 +3,11 @@
 //how react forms work. how to POST new user info(probably know). how to display toasts
 // ternary statements
 import { useState } from "react";
-import { FetchMeData } from "../API";
-// import MessageBox from "./Messages";
-// import MyPosts from "./MyPosts";
 import { useEffect } from "react";
-//
+import MessageBox from "./Messages";
+import MyPosts from "./MyPosts";
+import CreatePost from "./CreatePost";
+
 export default function Profile() {
   const [userData, setUserData] = useState(null);
   const [username, setUsername] = useState("user");
@@ -39,14 +39,19 @@ export default function Profile() {
     }
     FetchMeData();
   }, []);
-  console.log(userData);
+  //   console.log(userData);
   useEffect(() => {
     userData && setUsername(userData.data.username);
   });
-  console.log(username);
   return (
     <>
-      <div> Welcome, {username}</div>
+      <div>
+        {" "}
+        <h2> Welcome, {username}</h2>
+        <MyPosts />
+        <MessageBox />
+        <CreatePost />
+      </div>
     </>
   );
 }

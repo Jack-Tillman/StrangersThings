@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import MessageForm from "./MessageForm";
 
 const PostListName = ({ post }) => {
   const navigate = useNavigate();
@@ -13,16 +14,19 @@ const PostListName = ({ post }) => {
       <p className="post-updatedAt">{post.updatedAt}</p>
       <p className="post-location">{post.location}</p>
       <p className="post-willDeliver">{post.willDeliver}</p>
-      {token && <button
-        className="details-button"
-        id="details-button"
-        onClick={() => {
-          //when clicked, take user to detailed post view which will need to use useParams to render the post
-          navigate(`/${post._id}`);
-        }}
-      >
-        See Details
-      </button>}
+      {token && (
+        <button
+          className="details-button"
+          id="details-button"
+          onClick={() => {
+            //when clicked, take user to detailed post view which will need to use useParams to render the post
+            navigate(`/${post._id}`);
+          }}
+        >
+          See Details
+        </button>
+      )}
+      <MessageForm POST_ID={post._id} />
     </div>
   );
 };
