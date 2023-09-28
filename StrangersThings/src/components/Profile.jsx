@@ -7,7 +7,7 @@ import { FetchMeData } from "../API";
 // import MessageBox from "./Messages";
 // import MyPosts from "./MyPosts";
 import { useEffect } from "react";
-
+//
 export default function Profile() {
   const [userData, setUserData] = useState(null);
   const [username, setUsername] = useState("user");
