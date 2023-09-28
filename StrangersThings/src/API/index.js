@@ -133,3 +133,25 @@ export const makePost = async (postData, token) => {
     console.error(err);
   }
 }
+
+export async function fetchSinglePost(id) {
+  try {
+    const response = await fetch(`${API_URL}/posts/${id}`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function deletePost(id) {
+  try {
+    const response = await fetch(`${API_URL}/players/${id}`, {
+      method: "DELETE"
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
