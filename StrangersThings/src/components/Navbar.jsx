@@ -16,6 +16,9 @@ const Navbar = ({ token }) => {
       <Link to="/register" className="nav-item">
         Register
       </Link>
+      <Link to="/create" className="nav-item">
+        Make a Post
+      </Link>
 
       <button className="button" onClick={(Logout)}>Logout</button>
     </nav>
