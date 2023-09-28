@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default async function FetchMeData() {
-  const token = sessionStorage.getItem;
+  const token = sessionStorage.getItem("token");
   try {
     const response = await fetch(
       `https://strangers-things.herokuapp.com/api/2306-ftb-et-web-am/users/me`,
@@ -15,7 +15,8 @@ export default async function FetchMeData() {
     );
     const result = await response.json();
     console.log(result);
-    return result;
+    const userData = result;
+    return userData;
   } catch (err) {
     console.error(err);
   }
