@@ -38,11 +38,14 @@ const Navbar = () => {
       <Link to="/register" className="nav-item">
         Register
       </Link>
-  
-  </nav>)
-  }
-  {/* </div> */}
-      {/* ); */}
-// } ;
+      <Link to="/create" className="nav-item">
+        Make a Post
+      </Link>
+
+      <button className="button" onClick={(Logout)}>Logout</button>
+    </nav>
+  );
+};
+
 
 export default Navbar;

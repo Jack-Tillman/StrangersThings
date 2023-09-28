@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 
+
 export default async function FetchMeData(){
     const token = sessionStorage.getItem(token)
     
@@ -22,3 +23,4 @@ export default async function FetchMeData(){
                 console.error(err)
             }
         }
+
