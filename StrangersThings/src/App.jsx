@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import CreatePost from "./components/CreatePost";
 import "./App.css";
 import Profile from "./components/Profile";
+import DetailedPosts from "./components/DetailedPosts";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -17,10 +18,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<DetailedPosts />} />
           <Route path="/create" element={<CreatePost />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile token={token}/>} />
         </Routes>
       </BrowserRouter>
     </>

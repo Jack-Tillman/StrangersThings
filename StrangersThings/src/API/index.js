@@ -100,15 +100,11 @@ export const login = async (username, password) => {
   }
  }
 
-/* NOT TESTED YET
-
-  this function assumes the postData taken from the make post component is an
-  object with 5 keys (title, desc, etc.) and also that the token of the user 
-  is passed as a variable as well
-
+/* 
+FUNCTIONAL 
 */
 
-export const makePost = async (postData, token) => {
+export const makePost = async (postObject, token) => {
   try {
     const response = await fetch(`${API_URL}/posts`, {
       method: "POST",
@@ -118,11 +114,11 @@ export const makePost = async (postData, token) => {
       },
       body: JSON.stringify({
         post: {
-          title: `${postData.title}`,
-          description: `${postData.description}`,
-          price: `${postData.price}`,
-          location: `${postData.location}`,
-          willDeliver: `${postData.willDeliver}`
+          title: `${postObject.title}`,
+          description: `${postObject.description}`,
+          price: `${postObject.price}`,
+          location: `${postObject.location}`,
+          willDeliver: `${postObject.willDeliver}`
         }
       })
     });
@@ -149,6 +145,80 @@ export async function FetchMeData() {
     const result = await response.json();
     return result
     
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const fetchPostById = async (token) => {
+  try {
+    const response = await fetch(`${API_URL}/posts`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const result = await response.json();
+    console.log(result);
+    /*To get just posts, do result.data.posts*/
+    return result;
+  } catch (error) {
+    console.error(error, error.message);
+  }
+};
+
+export const deletePost = async (token, postId) => {
+  try {
+    const response = await fetch(`${API_URL}/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const myData = async (token) => {
+
+  try {
+    const response = await fetch(`${API_URL}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export const postMessage = async (messageId, token, messageBody) => {
+  try {
+    const response = await fetch(`${API_URL}/posts/${messageId}/messages`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        message: {
+          content: `${messageBody}`
+        }
+      })
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
   } catch (err) {
     console.error(err);
   }

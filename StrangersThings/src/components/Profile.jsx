@@ -8,10 +8,12 @@ import { FetchMeData } from "../API";
 // import MyPosts from "./MyPosts";
 import { useEffect } from "react";
 
+
 export default function Profile() {
   const [userData, setUserData] = useState(null);
   const [username, setUsername] = useState("user");
   const [error, setError] = useState(null);
+
   // fetch /me data and display username + other info.
   // fetch messages data and display
   // enable reply to messages in display. fetch messages and post to.
@@ -49,3 +51,5 @@ export default function Profile() {
     </>
   );
 }
+
+export default Profile;
