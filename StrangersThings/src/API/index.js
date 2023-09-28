@@ -128,6 +128,26 @@ export const makePost = async (postObject, token) => {
   } catch (err) {
     console.error(err);
   }
+  
+}
+export async function FetchMeData() {
+  const token = sessionStorage.getItem("token");
+  try {
+    const response = await fetch(
+      `https://strangers-things.herokuapp.com/api/2306-ftb-et-web-am/users/me`,
+      { method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    return result
+    
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export const fetchPostById = async (token) => {
