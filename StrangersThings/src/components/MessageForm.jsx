@@ -21,7 +21,7 @@ export default function MessageForm(POST_ID) {
         },
         body: JSON.stringify({
           message: {
-            content: { message },
+            content: message,
           },
         }),
       });
