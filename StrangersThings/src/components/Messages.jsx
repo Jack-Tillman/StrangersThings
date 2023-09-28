@@ -36,9 +36,9 @@ export default function MessageBox() {
       {myMessages && (
         <div id="all-post-containter">
           {" "}
-          {myMessages.map((post) => {
+          {/* {myMessages.map((post) => {
             return <MessageList key={post._id} post={post} />;
-          })}
+          })} */}
         </div>
       )}
     </div>
