@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { fetchAllPosts } from "../API";
-import { useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import PostListName from "./PostListName";
 
@@ -11,8 +10,6 @@ const Home = ({ token }) => {
   const [error, setError] = useState(null);
   // state to track user input for search bar
   const [searchParam, setSearchParam] = useState("");
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function getAllPosts() {
@@ -50,7 +47,7 @@ const Home = ({ token }) => {
       {postsToDisplay && (
         <div id="all-post-container">
           {postsToDisplay.map((post) => {
-            return <PostListName key={post._id} post={post} />;
+            return <PostListName key={post._id} post={post} token={token} />;
           })}
         </div>
       )}

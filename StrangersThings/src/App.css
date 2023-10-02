@@ -14,7 +14,7 @@ nav {
     justify-content: space-between;
     margin: 25px;
     padding: 25px;
-    
+
 }
 
 .nav-item {
@@ -23,6 +23,7 @@ nav {
     text-decoration: none;
     padding: 10px;
 }
+
 #post-container {
     background-color: rgb(19, 48, 34);
     color: rgb(132, 175, 154);
@@ -54,7 +55,7 @@ nav {
 }
 
 .button {
-    background-color:rgb(20, 71, 54);
+    background-color: rgb(20, 71, 54);
     color: white;
     padding-left: 20px;
     padding-right: 20px;
@@ -62,6 +63,23 @@ nav {
     margin: 10px;
 }
 
-.button:hover {
+#success-notification {
+    color: rgb(83, 224, 83);
+    font-size: 3rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem auto;
+    width:55%;
+    padding:1rem;
+}
 
+#success-notification>* {
+    margin: 0.5rem auto;
+}
+
+#home-btn {
+    font-size: 2rem;
+    border-radius: 8%;
+    width:10rem;
 }

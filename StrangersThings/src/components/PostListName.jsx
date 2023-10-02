@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import MessageForm from "./MessageForm";
 
-const PostListName = ({ post }) => {
+const PostListName = ({ post, token }) => {
   const navigate = useNavigate();
-  const token = sessionStorage.getItem("token");
+  const storageToken = sessionStorage.getItem("token");
   return (
     <div id="post-container" key={post._id}>
       <h2 className="post-h2">{post.title}</h2>
@@ -14,7 +15,7 @@ const PostListName = ({ post }) => {
       <p className="post-updatedAt">{post.updatedAt}</p>
       <p className="post-location">{post.location}</p>
       <p className="post-willDeliver">{post.willDeliver}</p>
-      {token && (
+      {storageToken && (
         <button
           className="details-button"
           id="details-button"
@@ -26,7 +27,8 @@ const PostListName = ({ post }) => {
           See Details
         </button>
       )}
-      <MessageForm POST_ID={post._id} />
+      {(storageToken) ? <MessageForm POST_ID={post._id} /> : null
+      }
     </div>
   );
 };
